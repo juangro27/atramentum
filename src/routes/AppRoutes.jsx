@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
+import CustomersPage from "./CustomersPage";
 import PrivateRoute from "./PrivateRoutes";
 const AppRoutes = () => {
     return (
@@ -13,6 +14,14 @@ const AppRoutes = () => {
                 <Route
                     path="/"
                     element={<HomePage />}
+                />
+                <Route
+                    path="/logout"
+                    element={<h1> logout </h1>}
+                />
+                <Route
+                    path="/customers"
+                    element={<CustomersPage />}
                 />
             </Route>
             <Route

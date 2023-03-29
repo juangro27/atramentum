@@ -1,9 +1,9 @@
 import axios from "axios";
 
-class AuthService {
+class CustomersService {
     constructor() {
         this.api = axios.create({
-            baseURL: `${process.env.REACT_APP_API_URL}`,
+            baseURL: `${process.env.REACT_APP_API_URL}/customers`,
         });
 
         this.api.interceptors.request.use((config) => {
@@ -19,12 +19,10 @@ class AuthService {
         });
     }
 
-    login({ username, password }) {
-        return this.api.post(
-            `/authenticate?username=${username}&password=${password}`
-        );
+    getCustomers() {
+        return this.api.get(`/`);
     }
 }
 
-const authService = new AuthService();
-export default authService;
+const customersService = new CustomersService();
+export default customersService;

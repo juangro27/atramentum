@@ -16,6 +16,7 @@ function AuthProviderWrapper(props) {
     const authenticateUser = () => {
         if (getToken()) {
             setIsLoading(false);
+            setUser(true);
         } else {
             logout();
         }
@@ -23,7 +24,7 @@ function AuthProviderWrapper(props) {
 
     const logout = () => {
         localStorage.removeItem("authToken");
-        setUser(null);
+        setUser(false);
         setIsLoading(false);
     };
 
