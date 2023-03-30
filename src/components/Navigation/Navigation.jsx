@@ -8,12 +8,12 @@ import { AuthContext } from "../../contexts/auth.context";
 const Navigation = () => {
     const { user, logout } = useContext(AuthContext);
 
-    const navigation = [{ name: "Login", href: "/login", current: true }];
+    const navigation = [{ name: "Login", href: "/login" }];
 
     const navigationLogged = [
-        { name: "Home", href: "/", current: false },
-        { name: "Customers", href: "/customers", current: false },
-        { name: "Logout", href: "/logout", current: false },
+        { name: "Home", href: "/" },
+        { name: "Customers", href: "/customers" },
+        { name: "Logout", href: "/logout" },
     ];
 
     function classNames(...classes) {
@@ -50,11 +50,13 @@ const Navigation = () => {
                             </div>
                             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-between">
                                 <div className="flex flex-shrink-0 items-center">
-                                    <img
-                                        className="block h-8 w-auto"
-                                        src={logo}
-                                        alt="Akralogic logo"
-                                    />
+                                    <Link to="/">
+                                        <img
+                                            className="block h-8 w-auto"
+                                            src={logo}
+                                            alt="Akralogic logo"
+                                        />
+                                    </Link>
                                 </div>
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
@@ -64,16 +66,9 @@ const Navigation = () => {
                                                       key={item.name}
                                                       to={item.href}
                                                       className={classNames(
-                                                          item.current
-                                                              ? "bg-sky-900 text-white"
-                                                              : "text-sky-300 hover:bg-sky-700 hover:text-white",
+                                                          "text-sky-300 hover:bg-sky-700 hover:text-white",
                                                           "rounded-md px-3 py-2 text-sm font-medium"
                                                       )}
-                                                      aria-current={
-                                                          item.current
-                                                              ? "page"
-                                                              : undefined
-                                                      }
                                                   >
                                                       {item.name}
                                                   </Link>
@@ -87,16 +82,9 @@ const Navigation = () => {
                                                               "Logout" && logout
                                                       }
                                                       className={classNames(
-                                                          item.current
-                                                              ? "bg-sky-900 text-white"
-                                                              : "text-sky-300 hover:bg-sky-700 hover:text-white",
+                                                          "text-sky-300 hover:bg-sky-700 hover:text-white",
                                                           "rounded-md px-3 py-2 text-sm font-medium"
                                                       )}
-                                                      aria-current={
-                                                          item.current
-                                                              ? "page"
-                                                              : undefined
-                                                      }
                                                   >
                                                       {item.name}
                                                   </Link>
@@ -115,14 +103,9 @@ const Navigation = () => {
                                     as="a"
                                     href={item.href}
                                     className={classNames(
-                                        item.current
-                                            ? "bg-sky-900 text-white"
-                                            : "text-sky-300 hover:bg-sky-700 hover:text-white",
+                                        "text-sky-300 hover:bg-sky-700 hover:text-white",
                                         "block rounded-md px-3 py-2 text-base font-medium"
                                     )}
-                                    aria-current={
-                                        item.current ? "page" : undefined
-                                    }
                                 >
                                     {item.name}
                                 </Disclosure.Button>

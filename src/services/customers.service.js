@@ -27,16 +27,16 @@ class CustomersService {
         return this.api.get(`/customers/${id}`);
     }
 
-    editCustomer(id) {
-        return this.api.put(`/customers/${id}`);
+    editCustomer(id, user) {
+        return this.api.put(`/customers/${id}`, user);
     }
 
     getCustomerInvoice(id) {
         return this.api.get(`/customers/invoiceData/${id}`);
     }
 
-    editCustomerInvoice(id) {
-        return this.api.put(`/customers/invoiceData/${id}`);
+    editCustomerInvoice(id, invoiceData) {
+        return this.api.put(`/customers/invoiceData/${id}`, invoiceData);
     }
 }
 

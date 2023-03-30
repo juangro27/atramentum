@@ -19,49 +19,57 @@ const CustomersTable = () => {
     }, []);
 
     const changePage = async (page) => {
-        const customers = await customersService.getCustomers(page);
-        const {
-            totalPages,
-            pageSize,
-            totalElements,
-            pageNumber,
-            isFirst,
-            isLast,
-        } = customers.data;
+        try {
+            const customers = await customersService.getCustomers(page);
+            const {
+                totalPages,
+                pageSize,
+                totalElements,
+                pageNumber,
+                isFirst,
+                isLast,
+            } = customers.data;
 
-        setPagination({
-            totalPages,
-            pageSize,
-            totalElements,
-            pageNumber,
-            isFirst,
-            isLast,
-        });
+            setPagination({
+                totalPages,
+                pageSize,
+                totalElements,
+                pageNumber,
+                isFirst,
+                isLast,
+            });
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     const getCustomers = async () => {
-        const customers = await customersService.getCustomers();
-        const {
-            totalPages,
-            pageSize,
-            totalElements,
-            pageNumber,
-            isFirst,
-            isLast,
-        } = customers.data;
+        try {
+            const customers = await customersService.getCustomers();
+            const {
+                totalPages,
+                pageSize,
+                totalElements,
+                pageNumber,
+                isFirst,
+                isLast,
+            } = customers.data;
 
-        setCustomers(customers.data.content);
+            setCustomers(customers.data.content);
 
-        setPagination({
-            totalPages,
-            pageSize,
-            totalElements,
-            pageNumber,
-            isFirst,
-            isLast,
-        });
+            setPagination({
+                totalPages,
+                pageSize,
+                totalElements,
+                pageNumber,
+                isFirst,
+                isLast,
+            });
 
-        setLoading(false);
+            setLoading(false);
+        } catch (err) {
+            console.log(err);
+        }
     };
     return loading ? (
         <h1>Loading...</h1>
