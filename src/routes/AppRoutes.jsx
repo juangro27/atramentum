@@ -23,6 +23,10 @@ const AppRoutes = () => {
                     path="/customers"
                     element={<CustomersPage />}
                 />
+                <Route
+                    path="/customers/:id"
+                    element={"hoala"}
+                />
             </Route>
             <Route
                 path="*"

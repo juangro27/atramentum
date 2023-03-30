@@ -3,7 +3,7 @@ import axios from "axios";
 class CustomersService {
     constructor() {
         this.api = axios.create({
-            baseURL: `${process.env.REACT_APP_API_URL}/customers`,
+            baseURL: `${process.env.REACT_APP_API_URL}`,
         });
 
         this.api.interceptors.request.use((config) => {
@@ -19,8 +19,12 @@ class CustomersService {
         });
     }
 
-    getCustomers() {
-        return this.api.get(`/`);
+    getCustomers(pageNumber = 0) {
+        return this.api.get(`/customers?pageNumber=${pageNumber}`);
+    }
+
+    editCustomer(id) {
+        return this.api.put(`/customers/${id}`);
     }
 }
 
