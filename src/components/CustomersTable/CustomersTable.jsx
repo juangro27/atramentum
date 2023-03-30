@@ -79,12 +79,7 @@ const CustomersTable = () => {
                                     >
                                         ID
                                     </th>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-xs font-bold text-center text-gray-500 uppercase "
-                                    >
-                                        Status
-                                    </th>
+
                                     <th
                                         scope="col"
                                         className="px-6 py-3 text-xs font-bold text-center text-gray-500 uppercase "
@@ -99,10 +94,17 @@ const CustomersTable = () => {
                                     </th>
                                     <th
                                         scope="col"
+                                        className="px-6 py-3 text-xs font-bold text-center text-gray-500 uppercase "
+                                    >
+                                        Status
+                                    </th>
+                                    <th
+                                        scope="col"
                                         className="px-6 py-3 text-xs font-bold text-center text-gray-500 "
                                     >
                                         Phone
                                     </th>
+
                                     <th
                                         scope="col"
                                         className="px-6 py-3 text-xs font-bold text-center text-gray-500 uppercase "
@@ -118,14 +120,15 @@ const CustomersTable = () => {
                                             <td className="px-6 py-4 text-sm text-center  font-medium text-gray-800 whitespace-nowrap">
                                                 {customer.id}
                                             </td>
-                                            <td className="px-6 py-4 text-sm  text-center font-medium text-gray-800 whitespace-nowrap">
-                                                {`${customer.activated}`}
-                                            </td>
+
                                             <td className="px-6 py-4 text-sm text-center  text-gray-800 whitespace-nowrap">
                                                 {customer.contactName}
                                             </td>
                                             <td className="px-6 py-4 text-sm text-center  text-gray-800 whitespace-nowrap">
                                                 {customer.email}
+                                            </td>
+                                            <td className="px-6 py-4 text-sm  text-center font-medium text-gray-800 whitespace-nowrap">
+                                                {`${customer.activated}`}
                                             </td>
                                             <td className="px-6 py-4 text-sm text-center  text-gray-800 whitespace-nowrap">
                                                 {customer.phone1}
@@ -133,7 +136,7 @@ const CustomersTable = () => {
                                             <td className="px-6 py-4 text-sm   font-medium text-center whitespace-nowrap ">
                                                 <Link
                                                     className="text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none dark:focus:ring-sky-800"
-                                                    to="#"
+                                                    to={`./${customer.id}`}
                                                 >
                                                     Edit
                                                 </Link>

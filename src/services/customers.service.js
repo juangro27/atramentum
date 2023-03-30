@@ -23,8 +23,20 @@ class CustomersService {
         return this.api.get(`/customers?pageNumber=${pageNumber}`);
     }
 
+    getCustomer(id) {
+        return this.api.get(`/customers/${id}`);
+    }
+
     editCustomer(id) {
         return this.api.put(`/customers/${id}`);
+    }
+
+    getCustomerInvoice(id) {
+        return this.api.get(`/customers/invoiceData/${id}`);
+    }
+
+    editCustomerInvoice(id) {
+        return this.api.put(`/customers/invoiceData/${id}`);
     }
 }
 

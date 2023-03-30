@@ -1,13 +1,13 @@
-import { useParams } from "react-router-dom";
-import customersService from "../../services/customers.service";
+import EditBasicInformation from "../../components/EditBasicInformation/EditBasicInformation";
+import EditInvoiceData from "../../components/EditInvoiceData/EditInvoiceData";
 
 const EditCustomerPage = () => {
-    const { id } = useParams(id);
-
-    const editCustomer = async () => {
-        const customer = await customersService.editCustomer();
-    };
-
-    return "EditCustomerPage";
+    return (
+        <>
+            <h1>Edit user</h1>
+            <EditBasicInformation />
+            <EditInvoiceData />
+        </>
+    );
 };
 export default EditCustomerPage;

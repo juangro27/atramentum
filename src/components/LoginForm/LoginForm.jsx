@@ -23,7 +23,6 @@ const LoginForm = () => {
         e.preventDefault();
         try {
             const { data: user } = await authService.login(loginData);
-            console.log(user);
             await storeToken(user.token);
             authenticateUser();
             navigate("/");

@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import EditCustomerPage from "../pages/EditCustomerPage/EditCustomerPage";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import CustomersPage from "./CustomersPage";
@@ -25,7 +26,7 @@ const AppRoutes = () => {
                 />
                 <Route
                     path="/customers/:id"
-                    element={"hoala"}
+                    element={<EditCustomerPage />}
                 />
             </Route>
             <Route
