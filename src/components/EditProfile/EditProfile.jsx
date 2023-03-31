@@ -34,7 +34,6 @@ const EditProfile = ({ setNotification }) => {
                 type: "success",
             });
         } catch (err) {
-            console.log(err.response);
             setNotification({
                 message: err.response.data.message,
                 type: "err",

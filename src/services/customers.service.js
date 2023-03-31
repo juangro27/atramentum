@@ -31,12 +31,12 @@ class CustomersService {
         return this.api.put(`/customers/${id}`, user);
     }
 
-    getCustomerInvoice(id) {
-        return this.api.get(`/customers/invoiceData/${id}`);
+    getCustomerWebs(id) {
+        return this.api.get(`/customers/${id}/webs`);
     }
 
-    editCustomerInvoice(id, invoiceData) {
-        return this.api.put(`/customers/invoiceData/${id}`, invoiceData);
+    editCustomerWeb(id, web) {
+        return this.api.put(`/customers/webs/${id}`, web);
     }
 }
 

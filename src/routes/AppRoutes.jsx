@@ -25,7 +25,7 @@ const AppRoutes = () => {
                     element={<CustomersPage />}
                 />
                 <Route
-                    path="/customers/:id"
+                    path="/customers/edit/:id"
                     element={<EditCustomerPage />}
                 />
             </Route>

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import EditProfile from "../../components/EditProfile/EditProfile";
-import EditInvoiceData from "../../components/EditInvoiceData/EditInvoiceData";
+import CustomerWebs from "../../components/CustomerWebs/CustomerWebs";
 
 const EditCustomerPage = () => {
     const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -12,9 +12,9 @@ const EditCustomerPage = () => {
             content: <EditProfile setNotification={setNotification} />,
         },
         {
-            label: "Invoce information",
+            label: "Customer webs",
             key: "tab-2",
-            content: <EditInvoiceData setNotification={setNotification} />,
+            content: <CustomerWebs setNotification={setNotification} />,
         },
     ];
 
