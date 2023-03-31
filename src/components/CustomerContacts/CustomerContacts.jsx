@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import customersService from "../../services/customers.service";
-import EditWebInfo from "../EditWebInfo/EditWebInfo";
 import Pagination from "../Pagination/Pagination";
+import ContactInfo from "../ContactInfo/ContactInfo";
+import EditContactInfo from "../EditContactInfo/EditContactInfo";
 import Spinner from "../Spinner/Spinner";
-import WebInfo from "../WebInfo/WebInfo";
 
-const CustomerWebs = ({ setNotification }) => {
+const CustomerContacts = ({ setNotification }) => {
     const { id } = useParams();
-    const [webs, setWebs] = useState([]);
-    const [websEditStatus, setWebsEditStatus] = useState([]);
+    const [contacts, setContacts] = useState([]);
+    const [contactsEditStatus, setContactsEditStatus] = useState([]);
     const [shouldReload, setShouldReload] = useState(false);
     const [loading, setLoading] = useState(true);
     const [pagination, setPagination] = useState({
@@ -22,13 +22,16 @@ const CustomerWebs = ({ setNotification }) => {
     });
 
     useEffect(() => {
-        getCustomerWebs();
+        getCustomerContacts();
         setShouldReload(false);
     }, [shouldReload]);
 
     const changePage = async (page) => {
         try {
-            const customers = await customersService.getCustomerWebs(id, page);
+            const customers = await customersService.getCustomerContacts(
+                id,
+                page
+            );
             const {
                 totalPages,
                 pageSize,
@@ -51,9 +54,9 @@ const CustomerWebs = ({ setNotification }) => {
         }
     };
 
-    const getCustomerWebs = async () => {
+    const getCustomerContacts = async () => {
         try {
-            const websData = await customersService.getCustomerWebs(id);
+            const contactsData = await customersService.getCustomerContacts(id);
             const {
                 totalPages,
                 pageSize,
@@ -61,10 +64,10 @@ const CustomerWebs = ({ setNotification }) => {
                 pageNumber,
                 isFirst,
                 isLast,
-            } = websData.data;
+            } = contactsData.data;
 
-            setWebs(websData.data.content);
-            setWebsEditStatus(websData.data.content.map(() => false));
+            setContacts(contactsData.data.content);
+            setContactsEditStatus(contactsData.data.content.map(() => false));
 
             setPagination({
                 totalPages,
@@ -81,12 +84,12 @@ const CustomerWebs = ({ setNotification }) => {
     };
     return loading ? (
         <Spinner />
-    ) : webs.length >= 1 ? (
+    ) : contacts.length >= 1 ? (
         <div className="flex flex-col sm:p-20">
             <div className="overflow-x-auto">
                 <div className="p-1.5 w-full inline-block align-middle">
-                    <div className="overflow-hidden border rounded-lg">
-                        <table className="w-full divide-y divide-gray-200 ">
+                    <div className="overflow-hidden border rounded-lg overflow-x-auto	">
+                        <table className="w-full divide-y divide-gray-200  ">
                             <thead className="bg-gray-50">
                                 <tr>
                                     <th
@@ -100,36 +103,70 @@ const CustomerWebs = ({ setNotification }) => {
                                         scope="col"
                                         className="px-6 py-3 text-xs font-bold text-center text-gray-500 uppercase "
                                     >
-                                        Url
+                                        Name
                                     </th>
-
                                     <th
                                         scope="col"
                                         className="px-6 py-3 text-xs font-bold text-center text-gray-500 uppercase "
                                     >
-                                        Edit
+                                        Phone
+                                    </th>
+                                    <th
+                                        scope="col"
+                                        className="px-6 py-3 text-xs font-bold text-center text-gray-500 uppercase "
+                                    >
+                                        Email
+                                    </th>
+                                    <th
+                                        scope="col"
+                                        className="px-6 py-3 text-xs font-bold text-center text-gray-500 uppercase "
+                                    >
+                                        Morning init hour
+                                    </th>
+                                    <th
+                                        scope="col"
+                                        className="px-6 py-3 text-xs font-bold text-center text-gray-500 uppercase "
+                                    >
+                                        Morning end hour
+                                    </th>
+                                    <th
+                                        scope="col"
+                                        className="px-6 py-3 text-xs font-bold text-center text-gray-500 uppercase "
+                                    >
+                                        Afternoon init hour
+                                    </th>
+                                    <th
+                                        scope="col"
+                                        className="px-6 py-3 text-xs font-bold text-center text-gray-500 uppercase "
+                                    >
+                                        Afternoon end hour
                                     </th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
-                                {webs.map((web, index) => {
-                                    return websEditStatus[index] === false ? (
-                                        <WebInfo
-                                            key={`web-${index}`}
-                                            webInfo={web}
+                                {contacts.map((contact, index) => {
+                                    return contactsEditStatus[index] ===
+                                        false ? (
+                                        <ContactInfo
+                                            key={`contact-${index}`}
+                                            contactInfo={contact}
                                             index={index}
-                                            websEditStatus={websEditStatus}
-                                            setWebsEditStatus={
-                                                setWebsEditStatus
+                                            contactsEditStatus={
+                                                contactsEditStatus
+                                            }
+                                            setContactsEditStatus={
+                                                setContactsEditStatus
                                             }
                                         />
                                     ) : (
-                                        <EditWebInfo
-                                            key={`web-${index}`}
-                                            webInfo={web}
-                                            websEditStatus={websEditStatus}
-                                            setWebsEditStatus={
-                                                setWebsEditStatus
+                                        <EditContactInfo
+                                            key={`contact-${index}`}
+                                            contactInfo={contact}
+                                            contactsEditStatus={
+                                                contactsEditStatus
+                                            }
+                                            setContactsEditStatus={
+                                                setContactsEditStatus
                                             }
                                             setNotification={setNotification}
                                             setShouldReload={setShouldReload}
@@ -158,4 +195,4 @@ const CustomerWebs = ({ setNotification }) => {
         <h1>No results...</h1>
     );
 };
-export default CustomerWebs;
+export default CustomerContacts;

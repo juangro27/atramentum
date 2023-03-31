@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import customersService from "../../services/customers.service";
+import Spinner from "../Spinner/Spinner";
 
 const EditWebInfo = ({
     webInfo,
@@ -39,7 +40,7 @@ const EditWebInfo = ({
     };
 
     return !web ? (
-        <p>Loading...</p>
+        <Spinner />
     ) : (
         <tr key={web.id}>
             <td className="px-6 py-4 text-sm text-center  font-medium text-gray-800 whitespace-nowrap">
@@ -60,7 +61,7 @@ const EditWebInfo = ({
                 </form>
             </td>
 
-            <td className="px-6 py-4 text-sm   font-medium text-center whitespace-nowrap ">
+            <td className="px-6 py-4 text-sm flex flex-col sm:flex-row   font-medium text-center whitespace-nowrap ">
                 <Link
                     className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800"
                     onClick={changeStatus}

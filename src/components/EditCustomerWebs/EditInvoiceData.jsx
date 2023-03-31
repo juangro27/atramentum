@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import customersService from "../../services/customers.service";
+import Spinner from "../Spinner/Spinner";
 
 const EditInvoiceData = ({ setNotification }) => {
     const [isLoading, setIsLoading] = useState(true);
@@ -82,7 +83,7 @@ const EditInvoiceData = ({ setNotification }) => {
     };
 
     return isLoading ? (
-        <p>Loading...</p>
+        <Spinner />
     ) : (
         <div className="py-10">
             <h2 className="text-center font-bold text-4xl">

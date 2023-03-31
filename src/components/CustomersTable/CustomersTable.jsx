@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import customersService from "../../services/customers.service";
 import Pagination from "../Pagination/Pagination";
+import Spinner from "../Spinner/Spinner";
 
 const CustomersTable = () => {
     const [customers, setCustomers] = useState([]);
@@ -72,7 +73,7 @@ const CustomersTable = () => {
         }
     };
     return loading ? (
-        <h1>Loading...</h1>
+        <Spinner />
     ) : customers.length >= 1 ? (
         <div className="flex flex-col p-20">
             <div className="overflow-x-auto">

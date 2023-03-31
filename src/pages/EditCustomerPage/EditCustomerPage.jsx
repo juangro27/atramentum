@@ -1,6 +1,7 @@
 import { useState } from "react";
 import EditProfile from "../../components/EditProfile/EditProfile";
 import CustomerWebs from "../../components/CustomerWebs/CustomerWebs";
+import CustomerContacts from "../../components/CustomerContacts/CustomerContacts";
 
 const EditCustomerPage = () => {
     const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -16,6 +17,11 @@ const EditCustomerPage = () => {
             key: "tab-2",
             content: <CustomerWebs setNotification={setNotification} />,
         },
+        {
+            label: "Customer email",
+            key: "tab-3",
+            content: <CustomerContacts setNotification={setNotification} />,
+        },
     ];
 
     const changeTab = (index) => {
@@ -25,12 +31,13 @@ const EditCustomerPage = () => {
 
     return (
         <>
-            <h1>Edit user</h1>
-            <div>
+            <h1 className="text-5xl	text-center	pt-10">Edit user</h1>
+
+            <div className="px-10 sm:px-20 py-5">
                 {notification && (
                     <p
                         className={
-                            notification.type === "err"
+                            notification.email === "err"
                                 ? "bg-red-700 text-zinc-50 text-center rounded-md py-2"
                                 : "bg-green-700 text-zinc-50 text-center rounded-md py-2"
                         }

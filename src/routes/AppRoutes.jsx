@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import EditCustomerPage from "../pages/EditCustomerPage/EditCustomerPage";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import CustomersPage from "./CustomersPage";
@@ -31,7 +32,7 @@ const AppRoutes = () => {
             </Route>
             <Route
                 path="*"
-                element={<h1>404 ERROR</h1>}
+                element={<ErrorPage />}
             />
         </Routes>
     );

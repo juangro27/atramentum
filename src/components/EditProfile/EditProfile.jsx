@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import customersService from "../../services/customers.service";
+import Spinner from "../Spinner/Spinner";
 
 const EditProfile = ({ setNotification }) => {
     const [isLoading, setIsLoading] = useState(true);
@@ -21,8 +22,13 @@ const EditProfile = ({ setNotification }) => {
     }, []);
 
     const handleInputChange = (e) => {
-        const { value, name } = e.target;
-        setUser({ ...user, [name]: value });
+        const { value, name, type, checked } = e.target;
+
+        if (type === "checkbox") {
+            setUser({ ...user, [name]: checked });
+        } else {
+            setUser({ ...user, [name]: value });
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -52,7 +58,7 @@ const EditProfile = ({ setNotification }) => {
     };
 
     return isLoading ? (
-        <p>Loading...</p>
+        <Spinner />
     ) : (
         <div className="py-10">
             <h2 className="text-center font-bold text-4xl">
