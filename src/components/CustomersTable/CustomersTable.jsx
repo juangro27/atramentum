@@ -31,6 +31,8 @@ const CustomersTable = () => {
                 isLast,
             } = customers.data;
 
+            setCustomers(customers.data.content);
+
             setPagination({
                 totalPages,
                 pageSize,
@@ -164,7 +166,7 @@ const CustomersTable = () => {
             </div>
         </div>
     ) : (
-        <h1>No results...</h1>
+        <h1 className="text-center">No results...</h1>
     );
 };
 export default CustomersTable;

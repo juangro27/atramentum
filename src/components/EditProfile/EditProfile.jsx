@@ -6,16 +6,7 @@ import Spinner from "../Spinner/Spinner";
 const EditProfile = ({ setNotification }) => {
     const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
-    const [user, setUser] = useState({
-        contactName: "",
-        email: "",
-        observations: "",
-        phone1: "",
-        activated: "",
-        agreeTerms: "",
-        agreeCommercials: "",
-        canContactPhone: "",
-    });
+    const [user, setUser] = useState({});
 
     useEffect(() => {
         getCustomer(id);

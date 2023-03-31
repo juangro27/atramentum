@@ -9,10 +9,7 @@ const LoginForm = () => {
     const { authenticateUser, storeToken } = useContext(AuthContext);
     const [errors, setErrors] = useState([]);
 
-    const [loginData, setLoginData] = useState({
-        username: "",
-        password: "",
-    });
+    const [loginData, setLoginData] = useState({});
 
     const handleInputChange = (e) => {
         const { value, name } = e.target;

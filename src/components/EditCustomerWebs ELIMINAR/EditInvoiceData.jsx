@@ -6,37 +6,7 @@ import Spinner from "../Spinner/Spinner";
 const EditInvoiceData = ({ setNotification }) => {
     const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
-    const [invoiceData, setInvoiceData] = useState({
-        id: 1,
-        address: {
-            id: 12,
-            customerId: 1,
-            titular: "titular1",
-            isPredetermined: false,
-            addressAlias: "NAME1",
-            countryId: 3,
-            provinceId: 3,
-            contactName: "NAME6",
-            address1: "address1",
-            postalCode: "03001",
-            town: "town1",
-            phoneA: "66528901",
-            phoneB: "66528902",
-            email: "email1@mail.com",
-            deleted: false,
-            createdBy: "ADMIN",
-            createdDate: "2021-04-03T15:23:12.444",
-            lastModifiedBy: "ADMIN",
-            lastModifiedDate: "2022-03-05T16:56:14.666",
-        },
-        commercialName: "example0",
-        identityCardNumber: "",
-        hasSurcharge: true,
-        isActive: true,
-        intercomunitariaOperator: false,
-        always_generateInvoice: false,
-        noCompensate: true,
-    });
+    const [invoiceData, setInvoiceData] = useState({});
 
     useEffect(() => {
         getInvoiceData(id);
@@ -74,7 +44,7 @@ const EditInvoiceData = ({ setNotification }) => {
                 type: "success",
             });
         } catch (err) {
-            console.log(err.response);
+            console.log(err);
             setNotification({
                 message: err.response.data.message,
                 type: "err",

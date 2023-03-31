@@ -20,7 +20,7 @@ class CustomersService {
     }
 
     getCustomers(pageNumber = 0) {
-        return this.api.get(`/customers?pageNumber=${pageNumber}`);
+        return this.api.get(`/customers?pageNumber=${pageNumber}&pageSize=5`);
     }
 
     getCustomer(id) {

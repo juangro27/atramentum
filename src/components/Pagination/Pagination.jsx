@@ -23,14 +23,14 @@ const Pagination = ({ changePage, pagination }) => {
                     <p className="text-sm text-gray-700">
                         Showing{" "}
                         <span className="font-medium">
-                            {pagination.pageNumber * 10 + 1}
+                            {pagination.pageNumber * 5 + 1}
                         </span>{" "}
                         to{" "}
                         <span className="font-medium">
                             {pagination.isLast
-                                ? pagination.pageNumber * 10 +
-                                  (pagination.totalElements % 10)
-                                : pagination.pageNumber + 10}
+                                ? pagination.pageNumber * 5 +
+                                  (pagination.totalElements % 5)
+                                : pagination.pageNumber + 5}
                         </span>{" "}
                         of{" "}
                         <span className="font-medium">
@@ -65,7 +65,7 @@ const Pagination = ({ changePage, pagination }) => {
                         <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">
                             {pagination.pageNumber + 1}
                         </span>
-                        {!pagination.isFirst && (
+                        {!pagination.isLast && (
                             <Link
                                 to="#"
                                 onClick={() =>

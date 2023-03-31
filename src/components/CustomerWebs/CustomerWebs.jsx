@@ -28,7 +28,7 @@ const CustomerWebs = ({ setNotification }) => {
 
     const changePage = async (page) => {
         try {
-            const customers = await customersService.getCustomerWebs(id, page);
+            const websData = await customersService.getCustomerWebs(id, page);
             const {
                 totalPages,
                 pageSize,
@@ -36,8 +36,9 @@ const CustomerWebs = ({ setNotification }) => {
                 pageNumber,
                 isFirst,
                 isLast,
-            } = customers.data;
+            } = websData.data;
 
+            setWebs(websData.data.content);
             setPagination({
                 totalPages,
                 pageSize,
@@ -82,7 +83,10 @@ const CustomerWebs = ({ setNotification }) => {
     return loading ? (
         <Spinner />
     ) : webs.length >= 1 ? (
-        <div className="flex flex-col sm:p-20">
+        <div className="flex flex-col sm:p-10">
+            <h2 className="text-center font-bold text-4xl pb-10">
+                Webs information
+            </h2>
             <div className="overflow-x-auto">
                 <div className="p-1.5 w-full inline-block align-middle">
                     <div className="overflow-hidden border rounded-lg">
@@ -113,7 +117,7 @@ const CustomerWebs = ({ setNotification }) => {
                             </thead>
                             <tbody className="divide-y divide-gray-200">
                                 {webs.map((web, index) => {
-                                    return websEditStatus[index] === false ? (
+                                    return !websEditStatus[index] ? (
                                         <WebInfo
                                             key={`web-${index}`}
                                             webInfo={web}
@@ -155,7 +159,7 @@ const CustomerWebs = ({ setNotification }) => {
             </div>
         </div>
     ) : (
-        <h1>No results...</h1>
+        <h1 className="text-center">No results...</h1>
     );
 };
 export default CustomerWebs;

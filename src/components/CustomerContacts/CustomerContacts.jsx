@@ -28,7 +28,7 @@ const CustomerContacts = ({ setNotification }) => {
 
     const changePage = async (page) => {
         try {
-            const customers = await customersService.getCustomerContacts(
+            const contactsData = await customersService.getCustomerContacts(
                 id,
                 page
             );
@@ -39,8 +39,9 @@ const CustomerContacts = ({ setNotification }) => {
                 pageNumber,
                 isFirst,
                 isLast,
-            } = customers.data;
+            } = contactsData.data;
 
+            setContacts(contactsData);
             setPagination({
                 totalPages,
                 pageSize,
@@ -85,7 +86,10 @@ const CustomerContacts = ({ setNotification }) => {
     return loading ? (
         <Spinner />
     ) : contacts.length >= 1 ? (
-        <div className="flex flex-col sm:p-20">
+        <div className="flex flex-col sm:p-10">
+            <h2 className="text-center font-bold text-4xl pb-10">
+                Contact information
+            </h2>
             <div className="overflow-x-auto">
                 <div className="p-1.5 w-full inline-block align-middle">
                     <div className="overflow-hidden border rounded-lg overflow-x-auto	">
@@ -141,12 +145,17 @@ const CustomerContacts = ({ setNotification }) => {
                                     >
                                         Afternoon end hour
                                     </th>
+                                    <th
+                                        scope="col"
+                                        className="px-6 py-3 text-xs font-bold text-center text-gray-500 uppercase "
+                                    >
+                                        Edit
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
                                 {contacts.map((contact, index) => {
-                                    return contactsEditStatus[index] ===
-                                        false ? (
+                                    return !contactsEditStatus[index] ? (
                                         <ContactInfo
                                             key={`contact-${index}`}
                                             contactInfo={contact}
@@ -192,7 +201,7 @@ const CustomerContacts = ({ setNotification }) => {
             </div>
         </div>
     ) : (
-        <h1>No results...</h1>
+        <h1 className="text-center">No results...</h1>
     );
 };
 export default CustomerContacts;
